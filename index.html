@@ -64,9 +64,10 @@
                 <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="phone-count" type="text" class="form-control text-center" value="1">
+                    <input id="phone-count" type="text" class="form-control text-center" value="0">
+                    <p id="phone-total">$0</p>
                 </div>
-                <div class="plus-minus-btn">
+                <div class="plus-minus-btn padding-bottom-25px">
                     <button onclick="handlePhoneChange('phone', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
                     <button onclick="handlePhoneChange('phone', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                    
@@ -75,9 +76,10 @@
                 <div class="input-group f-class">
                     <div>
                         <label for="">Economy ($100)</label>
-                        <input id="case-count" type="text" class="form-control text-center" value="1">
+                        <input id="case-count" type="text" class="form-control text-center" value="0">
+                        <p id="case-total">$0</p>
                     </div>
-                    <div class="plus-minus-btn">
+                    <div class="plus-minus-btn padding-bottom-25px">
                         <button onclick="handlePhoneChange('case', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         <button onclick="handlePhoneChange('case', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                     </div>
@@ -90,8 +92,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p id="phone-total">$0</p>
-                        <p id="case-total">$0</p>
+                        <p id="total-price">$0</p>
                     </div>
                 </div>
 
@@ -109,7 +110,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p id="total-price">$0</p>
+                        
                         <p id="grand-total">$0</p>
                     </div>
                 </div>
@@ -178,26 +179,6 @@
             return productCount;
         }
 
-      
-      
-    //     function handlePhoneChange(isIncrease){
-    //      const productInput = document.getElementById('phone-count');
-    //      const productCount = parseInt(productInput.value);
-    //      let productNewCount = productCount;
-
-    //      if (isIncrease == true) {
-    //         productNewCount = productCount + 1;
-    //      } 
-    //      if (isIncrease == false && productCount > 0) {
-    //         productNewCount = productCount - 1;
-    //      }
-
-    //      productInput.value = productNewCount;
-    //      const phoneTotal = productNewCount * 150;
-    //      document.getElementById('phone-total').innerText = '$' + phoneTotal;
-
-
-    //   }
     </script>
 </body>
 
