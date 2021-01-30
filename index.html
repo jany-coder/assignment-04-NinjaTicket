@@ -154,6 +154,7 @@
 
         }
 
+        //calculate function
 
         function calculateTotal () {
             
@@ -171,7 +172,7 @@
             return grandTotal;
         }
 
-
+        //input value parse function
         
         function getInputValue(price) {
             const priceInput = document.getElementById(price +'-count');
@@ -179,11 +180,11 @@
             return priceCount;
         }
 
-
+        // Submit button function
         function booked() {
  
             if (calculateTotal() == 0) {
-                alert("You do not purchase any ticket");
+                alert("You do not purchase any ticket!!");
             } else {
                 alert("Purchased ticket successfully. Thank you!!");
             }
