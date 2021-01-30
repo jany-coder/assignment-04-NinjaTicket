@@ -90,8 +90,8 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p><span id="phone-total">500</span></p>
-                        <p><span id="case-total">500</span></p>
+                        <p id="phone-total">0</p>
+                        <p id="case-total">0</p>
                     </div>
                 </div>
 
@@ -100,7 +100,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p id="tax-amount">$50</p>
                     </div>
                 </div>
                 <hr>
@@ -110,6 +110,7 @@
                     </div>
                     <div class="right">
                         <p id="total-price">$550</p>
+                        <p id="grand-total">$550</p>
                     </div>
                 </div>
             </div>
@@ -120,25 +121,10 @@
     <!--Thank You-->
 
     <script>
-        //plus button increase
-    //     document.getElementById('case-increase').addEventListener('click', function () {
-    //      handleProductChange(true);
-    //   })
-
-    //   //plus button decrease
-    //   document.getElementById('case-decrease').addEventListener('click', function () {
-    //      handleProductChange(false);
-    //   })
-
-
-
-
-
-
     
         function handlePhoneChange(product, isIncrease){
-            const productInput = document.getElementById(product+'-count');
-            const productCount = parseInt(productInput.value);
+
+            const productCount = getInputValue(product);
             let productNewCount = productCount;
 
             if (isIncrease == true) {
@@ -148,7 +134,7 @@
                 productNewCount = productCount - 1;
             }
 
-            productInput.value = productNewCount;
+            document.getElementById(product + '-count').value = productNewCount;
             //const phoneTotal = productNewCount * 150;
 
             let productTotal = 0;
@@ -164,18 +150,32 @@
             document.getElementById(product+'-total').innerText = '$' + productTotal;
             calculateTotal();
 
+           
+
         }
 
 
         function calculateTotal () {
-            const phoneInput = document.getElementById('phone-count');
-            const phoneCount = parseInt(phoneInput.value);
-
-            const caseInput = document.getElementById('case-count');
-            const caseCount = parseInt(caseInput.value);
+            
+            const phoneCount = getInputValue('phone');
+            const caseCount = getInputValue('case');
 
             const totalPrice = phoneCount * 150 + caseCount * 100;
             document.getElementById('total-price').innerText = '$' + totalPrice;
+            const tax = Math.round(totalPrice * 0.1);
+            document.getElementById('tax-amount').innerText = '$' + tax;
+
+            const grandTotal = totalPrice + tax;
+            document.getElementById('grand-total').innerText = '$' + grandTotal;
+            
+        }
+
+
+        
+        function getInputValue(product) {
+            const productInput = document.getElementById(product +'-count');
+            const productCount = parseInt(productInput.value);
+            return productCount;
         }
 
       
