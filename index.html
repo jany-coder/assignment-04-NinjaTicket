@@ -64,24 +64,24 @@
                 <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="phone-count" type="text" class="form-control text-center" value="0">
-                    <p id="phone-total">$0</p>
+                    <input id="firstClass-count" type="text" class="form-control text-center" value="0">
+                    <p id="firstClass-total">$0</p>
                 </div>
                 <div class="plus-minus-btn padding-bottom-25px">
-                    <button onclick="handlePhoneChange('phone', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
-                    <button onclick="handlePhoneChange('phone', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                    <button onclick="handlePriceChange('firstClass', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    <button onclick="handlePriceChange('firstClass', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                    
                 </div>
             </div>
                 <div class="input-group f-class">
                     <div>
                         <label for="">Economy ($100)</label>
-                        <input id="case-count" type="text" class="form-control text-center" value="0">
-                        <p id="case-total">$0</p>
+                        <input id="economyClass-count" type="text" class="form-control text-center" value="0">
+                        <p id="economyClass-total">$0</p>
                     </div>
                     <div class="plus-minus-btn padding-bottom-25px">
-                        <button onclick="handlePhoneChange('case', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
-                        <button onclick="handlePhoneChange('case', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                        <button onclick="handlePriceChange('economyClass', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        <button onclick="handlePriceChange('economyClass', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                     </div>
                 </div>
 
@@ -123,32 +123,31 @@
 
     <script>
     
-        function handlePhoneChange(product, isIncrease){
+        function handlePriceChange(price, isIncrease){
 
-            const productCount = getInputValue(product);
-            let productNewCount = productCount;
+            const priceCount = getInputValue(price);
+            let priceNewCount = priceCount;
 
             if (isIncrease == true) {
-                productNewCount = productCount + 1;
+                priceNewCount = priceCount + 1;
             } 
-            if (isIncrease == false && productCount > 0) {
-                productNewCount = productCount - 1;
+            if (isIncrease == false && priceCount > 0) {
+                priceNewCount = priceCount - 1;
             }
 
-            document.getElementById(product + '-count').value = productNewCount;
-            //const phoneTotal = productNewCount * 150;
+            document.getElementById(price + '-count').value = priceNewCount;
 
-            let productTotal = 0;
+            let priceTotal = 0;
 
-            if (product == 'phone') {
-                productTotal = productNewCount * 150; 
+            if (price == 'firstClass') {
+                priceTotal = priceNewCount * 150; 
             }
 
-            if (product == 'case') {
-                productTotal = productNewCount * 100; 
+            if (price == 'economyClass') {
+                priceTotal = priceNewCount * 100; 
             }
 
-            document.getElementById(product+'-total').innerText = '$' + productTotal;
+            document.getElementById(price+'-total').innerText = '$' + priceTotal;
             calculateTotal();
 
            
@@ -158,10 +157,10 @@
 
         function calculateTotal () {
             
-            const phoneCount = getInputValue('phone');
-            const caseCount = getInputValue('case');
+            const firstClassCount = getInputValue('firstClass');
+            const economyClassCount = getInputValue('economyClass');
 
-            const totalPrice = phoneCount * 150 + caseCount * 100;
+            const totalPrice = firstClassCount * 150 + economyClassCount * 100;
             document.getElementById('total-price').innerText = '$' + totalPrice;
             const tax = Math.round(totalPrice * 0.1);
             document.getElementById('tax-amount').innerText = '$' + tax;
@@ -173,10 +172,10 @@
 
 
         
-        function getInputValue(product) {
-            const productInput = document.getElementById(product +'-count');
-            const productCount = parseInt(productInput.value);
-            return productCount;
+        function getInputValue(price) {
+            const priceInput = document.getElementById(price +'-count');
+            const priceCount = parseInt(priceInput.value);
+            return priceCount;
         }
 
     </script>
